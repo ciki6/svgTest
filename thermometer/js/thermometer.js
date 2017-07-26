@@ -1,7 +1,5 @@
 !function () {
-    var Thermometer = function(options) {
-        this.userOptions = options;
-
+    var Thermometer = function() {
         this._setDefaultValues = _setDefaultValues;
         this._setDefaultFunctions = _setDefaultFunctions;
 
@@ -29,7 +27,6 @@
         this._calculateHeight = _calculateHeight;
         this._render = _render;
         this._update = _update;
-
     }
 
     function _mergeOptions(option1 , option2){

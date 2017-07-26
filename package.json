@@ -1,0 +1,26 @@
+{
+  "name": "svg_test",
+  "version": "1.0.0",
+  "description": "practice svg and d3",
+  "main": "index.js",
+  "dependencies": {
+    "d3": "^4.10.0",
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "build": "babel --presets es2015 js -d lib",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciki6/svgTest.git"
+  },
+  "author": "LuXiaoFu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ciki6/svgTest/issues"
+  },
+  "homepage": "https://github.com/ciki6/svgTest#readme"
+}

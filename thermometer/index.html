@@ -3,117 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <title>Thermometer Demo</title>
-    <script src="js/jquery-3.2.1.min.js" ></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="js/thermometer.js" ></script>
+    <script src="lib/jquery-3.2.1.min.js" ></script>
+    <script src="lib/d3.min.js"></script>
+    <script src="js/thermometerES6.js" ></script>
+    <!--<script src="app.js"></script>-->
     <script>
-//        function makeSVG(tag, attrs) {
-//            var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
-//            for (var k in attrs)
-//                el.setAttribute(k, attrs[k]);
-//            return el;
-//        }
+        /*function makeSVG(tag, attrs) {
+            var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+            for (var k in attrs)
+                el.setAttribute(k, attrs[k]);
+            return el;
+        }*/
 
 
         $(document).ready(function(){
-//            var bg = makeSVG('rect',{'class':'bg' , 'fill':'white'});
-//            var bottom = makeSVG('circle',{'class':'bottom'});
-//            var fill = makeSVG('rect',{'class':'fill'});
-//            $(".thermometer").append(bg);
-//            $(".thermometer").append(bottom);
-//            $(".thermometer").append(fill);
-//            $(".thermometer").append("<rect class='bg' style='stroke-width:1;stroke:rgb(0,0,0)'/>");
-//            $(".thermometer").append("<circle class='bottom' stroke='black' stroke-width='2'/>");
-//            $(".thermometer").append("<rect class='fill'/>");
+            /*var bg = makeSVG('rect',{'class':'bg' , 'fill':'white'});
+            var bottom = makeSVG('circle',{'class':'bottom'});
+            var fill = makeSVG('rect',{'class':'fill'});
+            $(".thermometer").append(bg);
+            $(".thermometer").append(bottom);
+            $(".thermometer").append(fill);
+            $(".thermometer").append("<rect class='bg' style='stroke-width:1;stroke:rgb(0,0,0)'/>");
+            $(".thermometer").append("<circle class='bottom' stroke='black' stroke-width='2'/>");
+            $(".thermometer").append("<rect class='fill'/>");*/
 
-//            $(".submit").click(function () {
-//                $(".thermometer").find('line').remove();
-//                $(".thermometer").find('text').remove();
-//                var target = parseFloat($(".value").val());
-//                var max = parseFloat($(".max").val());
-//                var min = parseFloat($(".min").val());
-//                var scaler = parseFloat($(".scale").val());
-//                var Height = parseFloat($(".height").val());
-//                var Width = parseFloat($(".width").val());
-//                var X = parseFloat($(".x").val());
-//                var Y = parseFloat($(".y").val());
-//                var fillColor = $(".color").val();
-//                var animateTime = parseFloat($(".animateTime").val());
-//                var height = (target-min)*Height/(max-min);
-//
-//                $(".bg").attr({
-//                    "x" : X,
-//                    "y" : Y,
-//                    "width" : Width,
-//                    "height" : Height
-//                });
-//                $(".bg").css({
-//                    "stroke-width" : 1,
-//                    "stroke" : "black"
-//                });
-//                $(".fill").attr({
-//                    "height" : height,
-//                    "width" : Width-2,
-//                    "x" : X+1,
-//                    "y" : Height-height+Y
-//                });
-//                $(".fill").css({
-//                    "fill" : fillColor,
-//                    "transition" : animateTime+"s"
-//                });
-//                $(".bottom").attr({
-//                    "cx" : X+Width/2,
-//                    "cy" : Y+Height+3,
-//                    "r" : Width/2+4
-//                });
-//                $(".bottom").css({
-//                    "fill" : fillColor,
-//                    "stroke-width" : 2,
-//                    "stroke" : "black",
-//                    "transition" : animateTime+"s"
-//                });
-//
-//                for(var i=0; i<= (max-min)/scaler; i++){
-//                    var scale = makeSVG('line' , {'id' : 'scale'+i});
-//                    var scaleText = makeSVG('text' , {'id' : 'scaleText'+i});
-//                    $(".thermometer").append(scale);
-//                    $(".thermometer").append(scaleText);
-//                    var x1 = X + Width;
-//                    var x2;
-//                    i % 5 == 0 ? x2 = x1 + 8 : x2 = x1 + 5;
-//                    $("#scale"+i).attr({
-//                        'x1' : x1,
-//                        'y1' : Y+Height-i*Height*scaler/(max-min),
-//                        'x2' : x2,
-//                        'y2' : Y+Height-i*Height*scaler/(max-min)
-//                    });
-//                    $("#scale"+i).css({
-//                        "stroke-width" : 2,
-//                        "stroke" : "black"
-//                    });
-//                    $("#scaleText"+i).attr({
-//                        'x' : x2 + 3,
-//                        'y' : Y+Height-i*Height*scaler/(max-min)+6,
-//                        'fill' : 'black'
-//                    });
-//                    $("#scaleText"+i)[0].textContent = scaler * i;
-//                }
-//            });
+            /*$(".submit").click(function () {
+                $(".thermometer").find('line').remove();
+                $(".thermometer").find('text').remove();
+                var target = parseFloat($(".value").val());
+                var max = parseFloat($(".max").val());
+                var min = parseFloat($(".min").val());
+                var scaler = parseFloat($(".scale").val());
+                var Height = parseFloat($(".height").val());
+                var Width = parseFloat($(".width").val());
+                var X = parseFloat($(".x").val());
+                var Y = parseFloat($(".y").val());
+                var fillColor = $(".color").val();
+                var animateTime = parseFloat($(".animateTime").val());
+                var height = (target-min)*Height/(max-min);
 
-//            $(".thermometer").thermometer({
-//                fillColor : 'green'
-//            });
-            var thermometer = new Thermometer();
-            thermometer.userOptions = {
+                $(".bg").attr({
+                    "x" : X,
+                    "y" : Y,
+                    "width" : Width,
+                    "height" : Height
+                });
+                $(".bg").css({
+                    "stroke-width" : 1,
+                    "stroke" : "black"
+                });
+                $(".fill").attr({
+                    "height" : height,
+                    "width" : Width-2,
+                    "x" : X+1,
+                    "y" : Height-height+Y
+                });
+                $(".fill").css({
+                    "fill" : fillColor,
+                    "transition" : animateTime+"s"
+                });
+                $(".bottom").attr({
+                    "cx" : X+Width/2,
+                    "cy" : Y+Height+3,
+                    "r" : Width/2+4
+                });
+                $(".bottom").css({
+                    "fill" : fillColor,
+                    "stroke-width" : 2,
+                    "stroke" : "black",
+                    "transition" : animateTime+"s"
+                });
+
+                for(var i=0; i<= (max-min)/scaler; i++){
+                    var scale = makeSVG('line' , {'id' : 'scale'+i});
+                    var scaleText = makeSVG('text' , {'id' : 'scaleText'+i});
+                    $(".thermometer").append(scale);
+                    $(".thermometer").append(scaleText);
+                    var x1 = X + Width;
+                    var x2;
+                    i % 5 == 0 ? x2 = x1 + 8 : x2 = x1 + 5;
+                    $("#scale"+i).attr({
+                        'x1' : x1,
+                        'y1' : Y+Height-i*Height*scaler/(max-min),
+                        'x2' : x2,
+                        'y2' : Y+Height-i*Height*scaler/(max-min)
+                    });
+                    $("#scale"+i).css({
+                        "stroke-width" : 2,
+                        "stroke" : "black"
+                    });
+                    $("#scaleText"+i).attr({
+                        'x' : x2 + 3,
+                        'y' : Y+Height-i*Height*scaler/(max-min)+6,
+                        'fill' : 'black'
+                    });
+                    $("#scaleText"+i)[0].textContent = scaler * i;
+                }
+            });
+
+            $(".thermometer").thermometer({
+                fillColor : 'green'
+            });*/
+            let thermometer = new Thermometer();
+//            thermometer.userOptions = {
+//                fillColor : 'green',
+//                max : 100,
+//                min : -10,
+//                proportion : 10
+//            };
+            thermometer.constructor.render({
                 fillColor : 'green',
                 max : 100,
                 min : -10,
                 proportion : 10
-            };
-            thermometer.render();
+            });
 
             $(".submit").click(function () {
-                thermometer.update($('.value').val());
+                thermometer.constructor.update({
+                    target : $('.value').val(),
+                    fillColor : 'red'
+                });
             })
 
         });
